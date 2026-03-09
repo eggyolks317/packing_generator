@@ -92,9 +92,10 @@ function backPage(event) {
 }
 
 function download() {
+  let destination = document.querySelector("#destination").textContent;
   const pdfOptions = {
     margin: 15,
-    filename: "downloaded-document.pdf",
+    filename: `packing_list_for_${destination}.pdf`,
     image: { type: "jpeg", quality: 0.98 },
     html2canvas: { scale: 2 },
     jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
