@@ -28,6 +28,7 @@ async function getResponse(prompt) {
   const ai = new GoogleGenAI({
     apiKey: apiKeyInput.value,
   });
+  // get responser
   const response = await ai.models.generateContent({
     model: "gemini-3.1-flash-lite-preview",
     contents: prompt,
@@ -39,14 +40,19 @@ async function getResponse(prompt) {
 }
 
 async function submitForm(event) {
+  // to prevent actual submission
   event.preventDefault();
+  // hide and show designated container
   logistics_form.classList.add("hidden");
   result_container.classList.remove("hidden");
+  // show loading text
   results.textContent = "generating a perfect list for you...";
   results.style.color = "cadetblue";
   results.style.fontStyle = "italic";
+  // prevent user downloading empty doc
   download_btn.disabled = true;
 
+  // get input
   const tripDetails = {
     departure: document.querySelector("#departure").value,
     destination: document.querySelector("#destination").value,
@@ -56,8 +62,9 @@ async function submitForm(event) {
     luggage_size: document.querySelector("#luggage_size").value,
   };
 
+  // get prompt
   console.log("Trip Details:", tripDetails);
-  var prompt = generatePrompt(
+  let prompt = generatePrompt(
     tripDetails.departure,
     tripDetails.destination,
     tripDetails.nationality,
@@ -67,31 +74,31 @@ async function submitForm(event) {
   );
   console.log("prompt: " + prompt);
 
+  // get response
   var response = await getResponse(prompt);
   console.log(response);
   results.innerHTML = marked.parse(response);
   results.style.color = "cadetblue";
   results.style.fontStyle = "";
+  // allow download feature
   download_btn.disabled = false;
 }
 
 function backPage(event) {
   event.preventDefault();
+  // hide results and allow editing logistics
   logistics_form.classList.remove("hidden");
   result_container.classList.add("hidden");
 }
 
 function download() {
-  // Step 3: Define your PDF settings
   const pdfOptions = {
-    margin: 15, // 15mm margins
+    margin: 15,
     filename: "downloaded-document.pdf",
     image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 }, // Higher scale = sharper text resolution
+    html2canvas: { scale: 2 },
     jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
   };
-
-  // Step 4: Generate the PDF from the container and trigger the download
   html2pdf().set(pdfOptions).from(results).save();
 }
 
