@@ -20,7 +20,7 @@ function generatePrompt(
   travel_days,
   luggage_size = "unknown",
 ) {
-  return `I am travelling from ${departure} to ${destination} with a passport nationality of ${nationality}. I will be travelling from ${travel_date} with ${travel_days} days. My luggage size is ${luggage_size}. Keep in mind of the weather and location and use these information to generate a simple packing list that includes daily neccessities and travel documents and no descriptions. Format is heading with bullet points. `;
+  return `I am travelling from ${departure} to ${destination} with a passport nationality of ${nationality}. I will be travelling from ${travel_date} with ${travel_days} days. My luggage size is ${luggage_size}. Keep in mind of the weather and location and use these information to generate a simple packing list that includes daily neccessities and travel documents and no descriptions on the bullet points and no parenthesis in headings. Format is heading with bullet points. `;
 }
 
 async function getResponse(prompt) {
@@ -42,6 +42,10 @@ async function submitForm(event) {
   event.preventDefault();
   logistics_form.classList.add("hidden");
   result_container.classList.remove("hidden");
+  results.textContent = "generating a perfect list for you...";
+  results.style.color = "cadetblue";
+  results.style.fontStyle = "italic";
+  download_btn.disabled = true;
 
   const tripDetails = {
     departure: document.querySelector("#departure").value,
@@ -66,6 +70,9 @@ async function submitForm(event) {
   var response = await getResponse(prompt);
   console.log(response);
   results.innerHTML = marked.parse(response);
+  results.style.color = "cadetblue";
+  results.style.fontStyle = "";
+  download_btn.disabled = false;
 }
 
 function backPage(event) {

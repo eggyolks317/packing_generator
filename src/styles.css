@@ -36,10 +36,26 @@ input::placeholder {
 label {
   font-weight: bold;
 }
-form {
+form,
+#result_container {
   flex-direction: column;
   width: 50vw;
+}
+
+form {
   gap: 10px;
+}
+#result_container {
+  gap: 20px;
+}
+
+ul,
+p {
+  text-align: start;
+}
+
+#results {
+  text-align: center;
 }
 
 #result_btns {
