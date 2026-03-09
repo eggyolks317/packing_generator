@@ -7,11 +7,25 @@
 }
 
 body {
-  font-family: "Google Sans";
-  background-color: wheat;
+  min-height: 100vh;
+  font-family: "Google Sans", sans-serif;
+}
+input,
+button {
+  padding: 10px;
+  border: 1px, solid, grey;
+  border-radius: 5px;
+}
+
+input::placeholder {
+  font-style: italic;
+}
+label {
+  font-weight: bold;
 }
 form {
   flex-direction: column;
+  gap: 10px;
 }
 .flex {
   display: flex;
