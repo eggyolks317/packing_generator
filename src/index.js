@@ -20,7 +20,7 @@ function generatePrompt(
   travel_days,
   luggage_size = "unknown",
 ) {
-  return `I am travelling from ${departure} to ${destination} with a passport nationality of ${nationality}. I will be travelling from ${travel_date} with ${travel_days} days. My luggage size is ${luggage_size}. Keep in mind of the weather and location and use these information to generate a simple packing list that includes daily neccessities and travel documents and no descriptions on the bullet points and no parenthesis in headings. Format is heading with bullet points. `;
+  return `I am travelling from ${departure} to ${destination} with a passport nationality of ${nationality}. I will be travelling from ${travel_date} with ${travel_days} days. My luggage size is ${luggage_size}. Choose the type of clothing using the weather information of the travel time and location and use these information to generate a simple packing list that includes daily neccessities and travel documents and no descriptions on the bullet points and no parenthesis in headings. Format is heading with bullet points. `;
 }
 
 async function getResponse(prompt) {
