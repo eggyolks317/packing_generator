@@ -7,6 +7,7 @@ const submit_btn = document.querySelector("#submit_btn");
 const logistics_form = document.querySelector("#logistics_form");
 const back_btn = document.querySelector("#back_btn");
 const results = document.querySelector("#results");
+const result_container = document.querySelector("#result_container");
 
 //get gemini api
 const ai = new GoogleGenAI({
@@ -60,7 +61,14 @@ async function submitForm(event) {
   );
   console.log("prompt: " + prompt);
 
-  var response = await getResponse(prompt);
-  results.innerHTML = marked.parse(response);
+  //   var response = await getResponse(prompt);
+  //   results.innerHTML = marked.parse(response);
+}
+
+function backPage(event) {
+  event.preventDefault();
+  logistics_form.classList.remove("hidden");
+  result_container.classList.add("hidden");
 }
 submit_btn.addEventListener("click", submitForm);
+back_btn.addEventListener("click", backPage);
