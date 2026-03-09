@@ -2,12 +2,14 @@ import "./styles.css";
 import "normalize.css";
 import { GoogleGenAI } from "@google/genai";
 import { marked } from "marked";
+import html2pdf from "html2pdf.js";
 
 const submit_btn = document.querySelector("#submit_btn");
 const logistics_form = document.querySelector("#logistics_form");
 const back_btn = document.querySelector("#back_btn");
 const results = document.querySelector("#results");
 const result_container = document.querySelector("#result_container");
+const download_btn = document.querySelector("#download_btn");
 
 //get gemini api
 const ai = new GoogleGenAI({
@@ -61,8 +63,9 @@ async function submitForm(event) {
   );
   console.log("prompt: " + prompt);
 
-  //   var response = await getResponse(prompt);
-  //   results.innerHTML = marked.parse(response);
+  var response = await getResponse(prompt);
+  console.log(response);
+  results.innerHTML = marked.parse(response);
 }
 
 function backPage(event) {
@@ -70,5 +73,21 @@ function backPage(event) {
   logistics_form.classList.remove("hidden");
   result_container.classList.add("hidden");
 }
+
+function download() {
+  // Step 3: Define your PDF settings
+  const pdfOptions = {
+    margin: 15, // 15mm margins
+    filename: "downloaded-document.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 }, // Higher scale = sharper text resolution
+    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+  };
+
+  // Step 4: Generate the PDF from the container and trigger the download
+  html2pdf().set(pdfOptions).from(results).save();
+}
+
 submit_btn.addEventListener("click", submitForm);
 back_btn.addEventListener("click", backPage);
+download_btn.addEventListener("click", download);

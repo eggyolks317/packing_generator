@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@google/genai": "^1.44.0",
+    "html2pdf.js": "^0.14.0",
     "marked": "^17.0.4",
     "normalize.css": "^8.0.1"
   }

@@ -42,13 +42,16 @@
       <input
         type="text"
         id="luggage_size"
-        placeholder="enter luggage size (w x l x h)..."
+        placeholder="enter luggage size (inch)..."
       />
       <button type="submit" id="submit_btn">submit</button>
     </form>
     <div class="hidden" id="result_container">
       <div id="results"></div>
-      <button id="back_btn">Back</button>
+      <div id="result_btns" class="flex">
+        <button id="back_btn">Back</button>
+        <button id="download_btn">Download as PDF</button>
+      </div>
     </div>
   </body>
 </html>
