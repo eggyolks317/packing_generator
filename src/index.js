@@ -10,11 +10,7 @@ const back_btn = document.querySelector("#back_btn");
 const results = document.querySelector("#results");
 const result_container = document.querySelector("#result_container");
 const download_btn = document.querySelector("#download_btn");
-
-//get gemini api
-const ai = new GoogleGenAI({
-  apiKey: "AIzaSyDqZ3t-DCfkmdTyzQrnSdTJyr2Lqdt90Uo",
-});
+const apiKeyInput = document.querySelector("#api_key");
 
 function generatePrompt(
   departure,
@@ -28,6 +24,10 @@ function generatePrompt(
 }
 
 async function getResponse(prompt) {
+  //get gemini api
+  const ai = new GoogleGenAI({
+    apiKey: apiKeyInput.value,
+  });
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash-lite",
     contents: prompt,
