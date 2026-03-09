@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>travel packing list generator</h1>
-    <form class="flex">
+    <form id="logistics_form" class="flex">
       <label for="departure">Departure Location</label>
       <input
         id="departure"
@@ -44,7 +44,11 @@
         id="luggage_size"
         placeholder="enter luggage size (w x l x h)..."
       />
-      <button type="submit">submit</button>
+      <button type="submit" id="submit_btn">submit</button>
     </form>
+    <div class="hidden" id="result_container">
+      <div id="results"></div>
+      <button id="back_btn">Back</button>
+    </div>
   </body>
 </html>

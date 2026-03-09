@@ -29,6 +29,8 @@
     "webpack-dev-server": "^5.2.3"
   },
   "dependencies": {
+    "@google/genai": "^1.44.0",
+    "marked": "^17.0.4",
     "normalize.css": "^8.0.1"
   }
 }
