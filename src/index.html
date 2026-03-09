@@ -1,9 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>packing generator</title>
   </head>
-  <body></body>
+  <body>
+    <h1>travel packing list generator</h1>
+    <form class="flex">
+      <label for="departure">Departure Location</label>
+      <input
+        id="departure"
+        type="text"
+        required
+        placeholder="enter departure here..."
+      />
+      <label for="destination">Destination</label>
+      <input
+        id="destination"
+        type="text"
+        required
+        placeholder="enter destination here..."
+      />
+      <label for="nationality">Passport Nationality</label>
+      <input
+        type="text"
+        required
+        id="nationality"
+        placeholder="enter passport nationality here..."
+      />
+      <label for="travel_date">Travel Date</label>
+      <input id="travel_date" type="date" required />
+      <label for="travel_days">Travel Days</label>
+      <input
+        type="number"
+        id="travel_days"
+        required
+        placeholder="enter number of days here..."
+      />
+      <label for="luggage_size">Luggage Size (w x l x h)</label>
+      <input
+        type="text"
+        id="luggage_size"
+        placeholder="enter luggage size (w x l x h)..."
+      />
+      <button type="submit">submit</button>
+    </form>
+  </body>
 </html>
